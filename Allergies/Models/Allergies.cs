@@ -10,7 +10,7 @@ namespace Allergies.Models
         {
             AllergenList = new List<string>() { "eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats" };
 
-            UnknownAllergenList = new List<string>(){"shark dandruff", "alien bacteria", "puns", "water bears", "life", "poor grammar", "clowns", "LA Air", "bluray discs", "sunlight and garlic- btw, you're a vampire"};
+            UnknownAllergenList = new List<string>(){"land wars in asia", "iocane powder", "shark dandruff", "alien bacteria", "puns", "water bears", "life", "poor grammar", "clowns", "LA Air", "bluray discs", "sunlight and garlic- btw, you're a vampire"};
         }
 
 
@@ -41,7 +41,7 @@ namespace Allergies.Models
                 reducer = reducer - Math.Pow(2.0, (int)index);
                 try
                 {
-                    allergenList += AllergenList[(int)index] + ", ";
+                    allergenList = AllergenList[(int)index] + ", " + allergenList;
                 }
                 catch(ArgumentOutOfRangeException)
                 {

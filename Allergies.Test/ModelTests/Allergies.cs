@@ -88,7 +88,7 @@ namespace Allergies.Tests
             // Arrange
             Allergen allergen = new Allergen();
             // Act
-            string actual = allergen.ShowAllergens(2000.0);
+            string actual = allergen.ShowAllergens(10001.0);
             string result = allergen.UnknownReplacer(actual);
 
             // Assert
