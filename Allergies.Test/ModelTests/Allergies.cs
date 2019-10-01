@@ -69,5 +69,30 @@ namespace Allergies.Tests
             // Assert
             Assert.AreEqual("strawberries, eggs", actual);
         }
+        
+        [TestMethod]
+        public void ShowAllergens_RetrunUnknownAllergens_Strin()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            string actual = allergen.ShowAllergens(257.0);
+
+            // Assert
+            Assert.AreEqual("unknown allergen, eggs", actual);
+        }
+
+        [TestMethod]
+        public void ShowAllergens_UnknownAllergens_String()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            string actual = allergen.ShowAllergens(2000.0);
+            string result = allergen.UnknownReplacer(actual);
+
+            // Assert
+            Assert.AreEqual("unknown allergen, eggs", result);
+        }
     }
 }

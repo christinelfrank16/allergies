@@ -5,10 +5,14 @@ namespace Allergies.Models
     public class Allergen
     {
         List<string> AllergenList { get; }
+        List<string> UnknownAllergenList { get; }
         public Allergen()
         {
             AllergenList = new List<string>() { "eggs", "peanuts", "shellfish", "strawberries", "tomatoes", "chocolate", "pollen", "cats" };
+
+            UnknownAllergenList = new List<string>(){"shark dandruff", "alien bacteria", "puns", "water bears", "life", "poor grammar", "clowns", "LA Air", "bluray discs", "sunlight and garlic- btw, you're a vampire"};
         }
+
 
         public double GetUserInput(string input)
         {
@@ -34,14 +38,35 @@ namespace Allergies.Models
             while ((int)reducer > 0)
             {
                 double index = Math.Log(reducer, 2.0);
-                Console.WriteLine(reducer);
-                Console.WriteLine(index);
                 reducer = reducer - Math.Pow(2.0, (int)index);
-                allergenList += AllergenList[(int)index] + ", ";
+                try
+                {
+                    allergenList += AllergenList[(int)index] + ", ";
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    allergenList += "unknown allergen, ";
+                }
             }
             allergenList = allergenList.Substring(0,allergenList.Length-2);            
             
             return allergenList;
+        }
+        public string UnknownReplacer(string list)
+        {
+            Random rnd = new Random();
+            int unknownAllIndex = list.IndexOf("unknown allergen");
+
+            while(unknownAllIndex >= 0)
+            {
+                int index = rnd.Next(0, UnknownAllergenList.Count);
+                list = list.Remove(unknownAllIndex, 16).Insert(unknownAllIndex,UnknownAllergenList[index]);
+                unknownAllIndex = list.IndexOf("unknown allergen");
+
+                // list.Replace("unknown allergen", UnknownAllergenList[])
+            }
+
+            return list;
         }
         
     }
