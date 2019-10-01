@@ -21,5 +21,41 @@ namespace Allergies.Tests
             // Assert
             Assert.AreEqual("peanuts", actual);
         }
+
+        [TestMethod]
+        public void GetUserInput_ConvertToNumber_Number()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            double actual = allergen.GetUserInput("2");
+
+            // Assert
+            Assert.AreEqual(2.0, actual);
+        }
+
+                [TestMethod]
+        public void GetUserInput_RejectNonIntNumber_ErrorNumber()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            double actual = allergen.GetUserInput("2.2");
+
+            // Assert
+            Assert.AreEqual(-0.1, actual);
+        }
+
+        [TestMethod]
+        public void GetUserInput_ConvertToNumber_ErrorNumber()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            double actual = allergen.GetUserInput("forty");
+
+            // Assert
+            Assert.AreEqual(-0.1, actual);
+        }
     }
 }
