@@ -28,9 +28,20 @@ namespace Allergies.Models
 
         public string ShowAllergens(double userValue)
         {
-            double index = Math.Log(2.0, userValue);
+            double reducer = userValue;
+            string allergenList= "";
             
-            return AllergenList[(int)index];
+            while ((int)reducer > 0)
+            {
+                double index = Math.Log(reducer, 2.0);
+                Console.WriteLine(reducer);
+                Console.WriteLine(index);
+                reducer = reducer - Math.Pow(2.0, (int)index);
+                allergenList += AllergenList[(int)index] + ", ";
+            }
+            allergenList = allergenList.Substring(0,allergenList.Length-2);            
+            
+            return allergenList;
         }
         
     }

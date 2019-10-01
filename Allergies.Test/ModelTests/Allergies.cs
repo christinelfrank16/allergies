@@ -57,5 +57,17 @@ namespace Allergies.Tests
             // Assert
             Assert.AreEqual(-0.1, actual);
         }
+
+        [TestMethod]
+        public void ShowAllergens_RetrunMultipleAllergens_Strin()
+        {
+            // Arrange
+            Allergen allergen = new Allergen();
+            // Act
+            string actual = allergen.ShowAllergens(9.0);
+
+            // Assert
+            Assert.AreEqual("strawberries, eggs", actual);
+        }
     }
 }
